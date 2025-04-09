@@ -1,0 +1,120 @@
+/* Weather Card */
+.weather-card {
+  background: linear-gradient(135deg, #6B8DD6 0%, #8E37D7 100%);
+  color: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+    rgba(255,255,255,0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.1) 75%,
+    transparent 75%);
+  transform: rotate(30deg);
+  animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  100% { transform: translateX(100%) rotate(30deg); }
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.update-time {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+.weather-item {
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.weather-icon {
+  font-size: 2em;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.weather-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.value {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+.label {
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.weather-alert {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(255,50,50,0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(255,50,50,0.3);
+}
+
+.alert-item {
+  padding: 8px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.6; transform: scale(1); }
+}
+
+/* Add to backend server.py */
+@app.route('/api/weather')
+def get_weather():
+    lat = request.args.get('lat')
+    lon = request.args.get('lon')
+    
+    # Get from OpenWeatherMap API
+    response = requests.get(
+        'https://api.openweathermap.org/data/2.5/weather',
+        params={
+            'lat': lat,
+            'lon': lon,
+            'appid': 'YOUR_API_KEY',
+            'units': 'metric'
+        }
+    )
+    
+    return jsonify(response.json())

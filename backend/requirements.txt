@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+osmnx
+networkx
+shapely
+scikit-learn
+python-dotenv
