@@ -8,15 +8,14 @@ from shapely.geometry import LineString, Polygon
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+
 
 app = FastAPI(title="Flood Emergency Service API")
 
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv('CORS_ORIGIN', '*')],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
