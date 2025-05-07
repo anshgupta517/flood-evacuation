@@ -6,6 +6,9 @@ Web application to calculate shortest, safest evacuation routes during floods. �
 *   Utilizes OpenStreetMap road data (OSMnx), Shapely for flood zone analysis, and A\* search to avoid inundated areas, enhancing public safety and emergency response. 🗺️
 *   FastAPI backend, React/OpenLayers frontend. 🚀
 
+# Screenshot
+![Screenshot From 2025-05-07 08-46-20](https://github.com/user-attachments/assets/e65f1b03-118c-4afa-919d-007981f8ca32)
+
   
 ## working demo
 
