@@ -82,7 +82,3 @@ https://github.com/user-attachments/assets/1470ab4b-fcae-4809-b044-5971d76b18b5
 *   **A\* Search Algorithm:** Employs the A\* search algorithm to efficiently find optimal routes. 🤖
 
 
-## 🔗 Homepage
-
-[https://flood-evacuation.vercel.app](https://flood-evacuation.vercel.app)
-
